@@ -1,4 +1,3 @@
-//Arreglo para los elementos del storage?
 document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById("item").addEventListener("input", ()=>{
         let content = document.getElementById("item").value;
@@ -14,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () =>{
             ${localInfo}
         </ul>
         `;
-        //localStorage.clear("input");
         document.getElementById("item").value = null;
     })
 });
 
 document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById("limpiar").addEventListener("click", ()=>{
-        
+        document.getElementById("contenedor").innerHTML = ``;
+        localStorage.clear();
     })
 })
