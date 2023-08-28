@@ -5,6 +5,12 @@ let Item = document.getElementById("item");
 let listInfo = [];
 
 document.addEventListener('DOMContentLoaded', () =>{
+    Container.innerHTML += `
+    <ul class="list-group" id="contenedor">
+        ${JSON.parse(localStorage.getItem("input"))}
+    </ul>
+    `;
+    
     Agregar.addEventListener("click", ()=>{
         let itemInfo = Item.value;
         listInfo.push(itemInfo);
@@ -15,13 +21,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         </ul>
         `;
         Item.value = null;
-    })
-});
+    });
 
-document.addEventListener('DOMContentLoaded', ()=>{
     Cleanse.addEventListener("click", ()=>{
         Container.innerHTML = ``;
-        window.localStorage.clear();
+        localStorage.clear();
         Item.value = null;
-    })
-})
+    });
+});
