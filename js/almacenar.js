@@ -1,25 +1,27 @@
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById("item").addEventListener("input", ()=>{
-        let content = document.getElementById("item").value;
-        localStorage.setItem("input", content);
-    })
-});
+let Container = document.getElementById("contenedor");
+let Agregar = document.getElementById("agregar");
+let Cleanse = document.getElementById("limpiar");
+let Item = document.getElementById("item");
+let listInfo = [];
 
 document.addEventListener('DOMContentLoaded', () =>{
-    document.getElementById("agregar").addEventListener("click", ()=>{
-        let localInfo = localStorage.getItem("input");
-        document.getElementById("contenedor").innerHTML += `
+    Agregar.addEventListener("click", ()=>{
+        let itemInfo = Item.value;
+        listInfo.push(itemInfo);
+        localStorage.setItem("input", JSON.stringify(listInfo));
+        Container.innerHTML += `
         <ul class="list-group" id="contenedor">
-            ${localInfo}
+            ${itemInfo}
         </ul>
         `;
-        document.getElementById("item").value = null;
+        Item.value = null;
     })
 });
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById("limpiar").addEventListener("click", ()=>{
-        document.getElementById("contenedor").innerHTML = ``;
-        localStorage.clear();
+    Cleanse.addEventListener("click", ()=>{
+        Container.innerHTML = ``;
+        window.localStorage.clear();
+        Item.value = null;
     })
 })
